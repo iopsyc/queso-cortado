@@ -14,45 +14,77 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
-    .emoji {
-      font-size: 5rem;
+    .emoji-container {
+      position: relative;
+      width: 120px;
+      height: 100px;
       cursor: pointer;
-      transition: transform 0.3s ease;
     }
-    .emoji:hover {
-      transform: scale(1.2);
+    .knife, .cheese {
+      position: absolute;
+      font-size: 4rem;
+      transition: transform 0.8s ease, left 0.8s ease;
+    }
+    .knife {
+      left: 0;
+    }
+    .cheese {
+      right: 0;
+      left: 60px;
+    }
+    .animate .knife {
+      transform: rotate(-90deg);
+      left: 60px;
+    }
+    .animate .cheese {
+      transform: scale(1.1);
     }
     #mensaje {
       margin-top: 20px;
       font-size: 1.2rem;
       display: none;
     }
-    a {
-      margin-top: 10px;
-      color: #ffcc00;
-      text-decoration: none;
+    .boton {
+      margin-top: 15px;
+      background-color: #ffcc00;
+      color: #1a1a1a;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
       display: none;
-      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
     }
-    a:hover {
-      color: #ffd966;
+    .boton:hover {
+      background-color: #ffd966;
     }
   </style>
 </head>
 <body>
-  <div class="emoji" onclick="mostrarMensaje()">🔪🧀</div>
+  <h2>🔪 Parte el queso para desbloquear el recuerdo...</h2>
+  <div class="emoji-container" onclick="mostrarMensaje()">
+    <span class="knife">🔪</span>
+    <span class="cheese">🧀</span>
+  </div>
   <div id="mensaje">Después de esto... vuelve por la pasta con queso fundido.</div>
-  <a id="link1" href="https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-soldo/s-AI0iISFlMTE?si=b2289f1ce2dc4000a1c4ba47a2f9622b&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">Ir por la pasta</a>
-  <a id="link2" href="https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-sol-mp3/s-fjxRMziOjwW?si=d745abc75ddf422cbe8efaad13d7d2ee&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">(Y después... vuelve al origen)</a>
+  <button id="link1" class="boton" onclick="window.open('https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-sol-mp3/s-fjxRMziOjwW?si=d745abc75ddf422cbe8efaad13d7d2ee&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', '_blank')">🎧 Escuchar primera canción</button>
+  <button id="link2" class="boton" onclick="window.open('https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-soldo/s-AI0iISFlMTE?si=b2289f1ce2dc4000a1c4ba47a2f9622b&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', '_blank')">🍝 Ir por la pasta</button>
 
   <script>
     function mostrarMensaje() {
+      const container = document.querySelector('.emoji-container');
+      container.classList.add('animate');
       document.getElementById('mensaje').style.display = 'block';
-      document.getElementById('link1').style.display = 'block';
       setTimeout(() => {
-        document.getElementById('link2').style.display = 'block';
-      }, 3500);
+        document.getElementById('link1').style.display = 'inline-block';
+      }, 1000);
+      setTimeout(() => {
+        document.getElementById('link2').style.display = 'inline-block';
+      }, 4500);
     }
   </script>
 </body>
