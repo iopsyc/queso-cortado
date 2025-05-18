@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Queso Cortado</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .emoji {
+      font-size: 5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+    #mensaje {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      display: none;
+    }
+    a {
+      margin-top: 10px;
+      color: #ffcc00;
+      text-decoration: none;
+      display: none;
+      font-size: 1.1rem;
+    }
+    a:hover {
+      color: #ffd966;
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji" onclick="mostrarMensaje()">🔪🧀</div>
+  <div id="mensaje">Después de esto... vuelve por la pasta con queso fundido.</div>
+  <a id="link1" href="https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-soldo/s-AI0iISFlMTE?si=b2289f1ce2dc4000a1c4ba47a2f9622b&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">Ir por la pasta</a>
+  <a id="link2" href="https://soundcloud.com/jazmin-calderon-115606090/recordabas-el-sol-mp3/s-fjxRMziOjwW?si=d745abc75ddf422cbe8efaad13d7d2ee&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank">(Y después... vuelve al origen)</a>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById('mensaje').style.display = 'block';
+      document.getElementById('link1').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('link2').style.display = 'block';
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
